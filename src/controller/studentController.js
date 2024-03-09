@@ -10,7 +10,7 @@ export const createStudent = async(req, res) => {
     const result = await client.query(`
       INSERT INTO STUDENTS ( first_name, last_name, city, phone, email) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
       [req.body.firstName, req.body.lastName, req.body.city, req.body.phone, req.body.email]);
-    return res.status(200).json({rowCount: result.rowCount});
+    return res.status(200).json({rowCount: result.rowCount, id: result.rows[0].id});
   }catch(err){
     console.error("Error while saving request to database", err);
     throw err;

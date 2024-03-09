@@ -12,7 +12,7 @@ const dbConfig = {
 };
 
 // Database client
-const Client = pg.Client;
+const Client = pg.Client; // cant directly import client from pg as its a commonjs module and doesnt support esm
 let client;
 
 // Return database client to other modules
